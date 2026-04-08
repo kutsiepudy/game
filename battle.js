@@ -18,7 +18,7 @@ export function startBattle() {
 export function enemyTurn(hpDisplay) {
   if (gameState !== "inBattle") return;
 
-  playerStats.takeDamage(5);
+  playerStats.takeDamage(2);
 
   if (playerStats.health <= 0) {
     gameState = "gameOver";
