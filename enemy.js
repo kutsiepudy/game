@@ -1,5 +1,5 @@
 export const enemyStats = {
-  health: 40,
+  health: 19,
 
   takeDamage(amount) {
     this.health -= amount;
