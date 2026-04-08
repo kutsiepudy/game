@@ -1,0 +1,93 @@
+#overworld {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+  background-image: url('assets/background/overworld.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  background-repeat: no-repeat;
+}
+
+#battleUI {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  background-image: url('assets/background/battle.gif');
+  background-size: cover;
+  background-position: center;
+  display: none;
+  z-index: 2;
+  background-repeat: no-repeat;
+}
+
+#deathScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  background-image: url('assets/background/gameOver.png');
+  background-size: cover;
+  background-position: center;
+  display: none;
+  z-index: 2;
+  background-repeat: no-repeat;
+}
+
+#text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 3px solid white;
+  z-index: 3;
+  padding: 10px;
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+  display: none;
+  line-height: 1.5;
+  font-size: 18px;
+  overflow-y: auto;
+}
+
+#player, #enemy, #sillyNPC, #angryNPC {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  z-index: 4;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#player { bottom: 400px; left: 100px; background-color: blue; background-image: url('assets/sprites/player.png'); }
+#enemy { top: 200px; left: 100px; background-color: red; background-image: url('assets/sprites/enemy.png');}
+#angryNPC { top: 200px; right: 100px; background-color: purple; background-image: url('assets/sprites/npc.png');}
+#sillyNPC { bottom: 100px; left: 200px; background-color: green; background-image: url('assets/sprites/npc.png');}
+
+button {
+  position: absolute;
+  bottom: 140px;
+  padding: 10px 20px;
+  font-size: 16px;
+  z-index: 5;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+#damage { left: 20px; background-image: url('assets/misc/damageButton.png');}
+#heal { left: 140px; background-image: url('assets/misc/healButton.png'); }
