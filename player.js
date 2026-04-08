@@ -8,7 +8,7 @@ export const playerStats = {
   },
 
   heal(amount) {
-    if (this.spellPoints <= 0) return false;
+    if (this.spellPoints <= 1) return false;
     this.health += amount;
     this.spellPoints -= 2;
     return true;
