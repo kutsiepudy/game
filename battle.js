@@ -16,7 +16,7 @@ export function startBattle() {
 }
 
 export function enemyTurn(hpDisplay) {
-  if (gameState !== "gameOver" || gameState !== "inBattle") return;
+  if (gameState !== "inBattle") return;
 
   playerStats.takeDamage(5);
 
@@ -55,7 +55,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function playerHeal(hpDisplay) {
-  if (gameState !== "inBattle"&& gameState !== "gameOver") return;
+  if (gameState !== "inBattle") return;
 
   const healed = playerStats.heal(4);
   if (!healed) {
