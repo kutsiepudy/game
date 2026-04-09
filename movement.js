@@ -16,6 +16,7 @@ export function setupMovement(player, enemy) {
   });
 
   function gameLoop() {
+    gameState = "exploring";
     if (gameState !== "inBattle") {
       if (keys["ArrowUp"]) playerY -= speed;
       if (keys["ArrowDown"]) playerY += speed;
@@ -23,12 +24,14 @@ export function setupMovement(player, enemy) {
       if (keys["ArrowRight"]) playerX += speed;
       if (keys["x"]) speed * 2
 
+
       playerX = Math.max(0, Math.min(window.innerWidth - 50, playerX));
       playerY = Math.max(0, Math.min(window.innerHeight - 50, playerY));
 
       player.style.left = playerX + "px";
-      player.style.top = playerY + "px";;
+      player.style.top = playerY + "px";
       if (checkCollision(player, enemy)) {
+        gameState = "inBattle";
         startBattle();
         return;
       }
