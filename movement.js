@@ -21,6 +21,7 @@ export function setupMovement(player, enemy) {
       if (keys["ArrowDown"]) playerY += speed;
       if (keys["ArrowLeft"]) playerX -= speed;
       if (keys["ArrowRight"]) playerX += speed;
+      if (keys["x"]) speed * 2
 
       playerX = Math.max(0, Math.min(window.innerWidth - 50, playerX));
       playerY = Math.max(0, Math.min(window.innerHeight - 50, playerY));
