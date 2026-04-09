@@ -1,4 +1,4 @@
-import {gameState } from "./battle.js";
+import {gameState, startBattle} from "./battle.js";
 
 export function setupMovement(player, enemy) {
   let playerX = 100;
