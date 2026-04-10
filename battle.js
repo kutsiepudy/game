@@ -39,19 +39,25 @@ export function playerAttack(hpDisplay, enemyDisplay) {
   enemyStats.takeDamage(4);
 
   if (enemyStats.health <= 0) {
-    clearMessages();
-    showMessage("You won!")
-    stopMusic();
-    playMusic("assets/audio/victory.mp3");
-    gameState = "exploring";
-    updateUI();
-    return;
+    endBattle();
   }
 
   updateEnemyUI(enemyDisplay, enemyStats);
   setTimeout(() => {
     enemyTurn(hpDisplay);
   }, 800);
+}
+
+function endBattle() {
+  if (gameState !== "inBattle") return
+  clearMessages();
+  showMessage("You won!")
+  stopMusic();
+  playMusic("assets/audio/victory.mp3");
+  gameState = "exploring";
+  updateUI();
+  document.getElementById("enemy").style.display = "none";
+  return;
 }
 
 export function playerHeal(hpDisplay) {
