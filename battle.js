@@ -3,6 +3,8 @@ import { enemyStats } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, showMessage, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
 
+export let gameState = "exploring"
+
 export function startBattle() {
   gameState = "inBattle";
   updateUI();
