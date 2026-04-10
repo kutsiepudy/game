@@ -56,7 +56,7 @@ export function endBattle() {
   playMusic("assets/audio/victory.mp3");
   gameState = "exploring";
   updateUI();
-  document.getElementById("enemy").style.display = "none";
+  document.getElementById("enemy").remove();
   return;
 }
 
