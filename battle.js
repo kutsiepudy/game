@@ -48,7 +48,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
   }, 800);
 }
 
-function endBattle() {
+export function endBattle() {
   if (gameState !== "inBattle") return
   clearMessages();
   showMessage("You won!")
