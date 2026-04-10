@@ -16,8 +16,8 @@ export function setupMovement(player, enemy) {
   });
 
   function gameLoop() {
-    gameState = "exploring";
     if (gameState !== "inBattle") {
+      gameState = "exploring";
       if (keys["ArrowUp"]) playerY -= speed;
       if (keys["ArrowDown"]) playerY += speed;
       if (keys["ArrowLeft"]) playerX -= speed;
