@@ -49,15 +49,18 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function endBattle() {
-  if (gameState !== "inBattle") return
+  if (gameState !== "inBattle") return;
+
   clearMessages();
-  showMessage("You won!")
+  showMessage("You won!");
   stopMusic();
   playMusic("assets/audio/victory.mp3");
+
   gameState = "exploring";
   updateUI();
-  document.getElementById("enemy").remove();
-  return;
+
+  document.getElementById("enemy").style.display = "none";
+  document.getElementById("battleUI").style.display = "none";
 }
 
 export function playerHeal(hpDisplay) {
