@@ -26,9 +26,9 @@ export function clearMessages() {
 
 export function updateUI() {
   document.getElementById("overworld").style.display = 
-    gameState === "exploring" ? "block" : "none";
+    getGameState() === "exploring" ? "block" : "none";
   document.getElementById("battleUI").style.display =
-    gameState === "inBattle" ? "block" : "none";
+    getGameState() === "inBattle" ? "block" : "none";
   document.getElementById("deathScreen").style.display =
-    gameState === "gameOver" ? "block" : "none";
+    getGameState() === "gameOver" ? "block" : "none";
 }
