@@ -3,7 +3,7 @@ import { enemyStats } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, showMessage, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
 
-export let gameState = "exploring"
+let gameState = "exploring"
 
 export function getGameState() {
   return gameState;
@@ -20,7 +20,7 @@ export function startBattle() {
 }
 
 export function enemyTurn(hpDisplay) {
-  if (gameState !== "inBattle") return;
+  if (getGameState() !== "inBattle") return;
 
   playerStats.takeDamage(2);
 
@@ -38,7 +38,7 @@ export function enemyTurn(hpDisplay) {
 }
 
 export function playerAttack(hpDisplay, enemyDisplay) {
-  if (gameState !== "inBattle") return;
+  if (getGameState() !== "inBattle") return;
 
   enemyStats.takeDamage(4);
 
@@ -53,7 +53,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function endBattle() {
-  if (gameState !== "inBattle") return;
+  if (getGameState() !== "inBattle") return;
 
   clearMessages();
   showMessage("You won!");
@@ -68,7 +68,7 @@ export function endBattle() {
 }
 
 export function playerHeal(hpDisplay) {
-  if (gameState !== "inBattle") return;
+  if (getGameState() !== "inBattle") return;
 
   const healed = playerStats.heal(4);
   if (!healed) {
