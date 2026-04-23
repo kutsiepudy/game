@@ -3,7 +3,7 @@ import {gameState, startBattle} from "./battle.js";
 export function setupMovement(player, enemy) {
   let playerX = 100;
   let playerY = 100;
-  let currentSpeed = keys["x"] ? speed * 2
+  let currentSpeed = keys["x"] ? speed * 2;
   const speed = 3;
 
   const keys = {};
