@@ -1,4 +1,4 @@
-import {gameState, startBattle} from "./battle.js";
+import {getGameState, startBattle} from "./battle.js";
 
 export function setupMovement(player, enemy) {
   let playerX = 100;
@@ -16,7 +16,7 @@ export function setupMovement(player, enemy) {
   });
 
   function gameLoop() {
-    if (gameState !== "inBattle") {
+    if (getGameState() !== "inBattle") {
       if (keys["ArrowUp"]) playerY -= speed;
       if (keys["ArrowDown"]) playerY += speed;
       if (keys["ArrowLeft"]) playerX -= speed;
