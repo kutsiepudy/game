@@ -1,4 +1,4 @@
-import {gameState} from "./battle.js"
+import {getGameState} from "./battle.js"
 export function updatePlayerUI(hpDisplay, playerStats) {
   if (!hpDisplay) return;
   hpDisplay.textContent = `HP: ${playerStats.health}   SP: ${playerStats.spellPoints}`;
