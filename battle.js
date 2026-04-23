@@ -5,6 +5,10 @@ import {playMusic, sfx, stopMusic} from "./audio.js";
 
 export let gameState = "exploring"
 
+export function getGameState() {
+  return gameState;
+};
+
 export function startBattle() {
   gameState = "inBattle";
   updateUI();
