@@ -44,6 +44,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 
   if (enemyStats.health <= 0) {
     endBattle();
+    return
   }
 
   updateEnemyUI(enemyDisplay, enemyStats);
