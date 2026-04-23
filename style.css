@@ -72,10 +72,10 @@
   background-position: center;
 }
 
-#player { bottom: 400px; left: 100px; background-color: blue; background-image: url('assets/sprites/player.png'); }
-#enemy { top: 200px; left: 100px; background-color: red; background-image: url('assets/sprites/enemy.png');}
-#angryNPC { top: 200px; right: 100px; background-color: purple; background-image: url('assets/sprites/npc.png');}
-#sillyNPC { bottom: 100px; left: 200px; background-color: green; background-image: url('assets/sprites/npc.png');}
+#player { bottom: 400px; left: 100px; background-color: blue; background-image: url('sprites/player.png'); }
+#enemy { top: 200px; left: 100px; background-color: red; background-image: url('sprites/enemy.png');}
+#angryNPC { top: 200px; right: 100px; background-color: purple; background-image: url('sprites/npc.png');}
+#sillyNPC { bottom: 100px; left: 200px; background-color: green; background-image: url('sprites/npc.png');}
 
 button {
   position: absolute;
