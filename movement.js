@@ -1,4 +1,4 @@
-import {getGameState, startBattle} from "./battle.js";
+import {getGameState, startBattle, endBattle} from "./battle.js";
 
 export function setupMovement(player, enemy) {
   let playerX = 100;
@@ -30,6 +30,9 @@ export function setupMovement(player, enemy) {
       player.style.top = playerY + "px";
       if (checkCollision(player, enemy)) {
         startBattle();
+        return;
+      } else {
+        endBattle();
         return;
       }
     }
