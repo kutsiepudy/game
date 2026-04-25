@@ -31,9 +31,6 @@ export function setupMovement(player, enemy) {
       if (checkCollision(player, enemy)) {
         startBattle();
         return;
-      } else {
-        endBattle();
-        return;
       }
     }
 
