@@ -2,6 +2,7 @@ import { showMessage, clearMessages } from "./ui.js";
 import { sfx } from "./audio.js";
 
 const text = document.getElementById("text");
+let onFinishCallback = null;
 
 let currentDialogue = [];
 let dialogueIndex = 0;
@@ -9,6 +10,7 @@ let dialogueActive = false;
 
 export function startDialogue(dialogueArray) {
   dialogueActive = true;
+  onFinishCallback = onFinish || null;
 
   text.style.display = "block";
   clearMessages();
@@ -38,6 +40,11 @@ export function endDialogue() {
 
   clearMessages();
   text.style.display = "none";
+
+  if (onFinishCallback) {
+    onFinishCallback();
+    onFinishCallback = null;
+  }
 }
 
 export function isDialogueActive() {
