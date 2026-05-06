@@ -21,8 +21,9 @@ export function startBattle() {
   startDialogue([
     "A while Lancer appears",
     "Battle started..."
-  ]);
-}
+  ], () => {
+    console.log("Player turn");
+});
 
 export function enemyTurn(hpDisplay) {
   if (getGameState() !== "inBattle" || isDialogueActive()) return;
