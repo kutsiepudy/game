@@ -40,7 +40,10 @@ export function endDialogue() {
   text.style.display = "none";
 }
 
-// only works during active dialogue
+export function isDialogueActive() {
+  return dialogueActive;
+}
+
 document.addEventListener("keydown", (e) => {
   if (!dialogueActive) return;
 
