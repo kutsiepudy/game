@@ -19,11 +19,12 @@ export function startBattle() {
   document.getElementById("battleUI").style.display = "block";
 
   startDialogue([
-    "A while Lancer appears",
+    "A wild Lancer appears",
     "Battle started..."
   ], () => {
     console.log("Player turn");
-});
+  });
+}
 
 export function enemyTurn(hpDisplay) {
   if (getGameState() !== "inBattle" || isDialogueActive()) return;
