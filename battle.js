@@ -2,7 +2,7 @@ import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, showMessage, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
-import {startDialogue, endDialogue, dialogues} from "./dialogue.js";
+import {startDialogue, endDialogue, dialogues, isDialogueActive} from "./dialogue.js";
 
 let gameState = "exploring"
 
@@ -25,7 +25,7 @@ export function startBattle() {
 }
 
 export function enemyTurn(hpDisplay) {
-  if (getGameState() !== "inBattle") return;
+  if (getGameState() !== "inBattle" || isDialogueActive()) return;
 
   playerStats.takeDamage(2);
 
@@ -43,7 +43,7 @@ export function enemyTurn(hpDisplay) {
 }
 
 export function playerAttack(hpDisplay, enemyDisplay) {
-  if (getGameState() !== "inBattle") return;
+  if (getGameState() !== "inBattle" || isDialogueActive()) return;
 
   enemyStats.takeDamage(4);
 
@@ -59,7 +59,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function endBattle() {
-  if (getGameState() !== "inBattle") return;
+  if (getGameState() !== "inBattle" || isDialogueActive()) return;
 
   clearMessages();
   showMessage("You won!");
