@@ -2,6 +2,7 @@ import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, showMessage, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
+import {startDialogue, endDialogue, dialogues} from "./dialogue.js";
 
 let gameState = "exploring"
 
@@ -13,10 +14,14 @@ export function startBattle() {
   gameState = "inBattle";
   updateUI();
   clearMessages();
-  showMessage("A battle begins.");
   sfx("assets/audio/battleStart.mp3");
   playMusic("assets/audio/battleMusic.mp3")
   document.getElementById("battleUI").style.display = "block";
+
+  startDialogue([
+    "A while Lancer appears",
+    "Battle started..."
+  ]);
 }
 
 export function enemyTurn(hpDisplay) {
