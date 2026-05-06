@@ -21,7 +21,7 @@ export function setupMovement(player, enemy) {
     if (getGameState() === "inBattle") return;
 
     console.log("MOVING");
-  )};
+  });
 
   function gameLoop() {
     if (getGameState() !== "inBattle") {
