@@ -15,6 +15,14 @@ export function setupMovement(player, enemy) {
     keys[e.key] = false;
   });
 
+  document.addEventListener("keydown", (event) => {
+    console.log("State:", getGameState());
+
+    if (getGameState() === "inBattle") return;
+
+    console.log("MOVING");
+  )};
+
   function gameLoop() {
     if (getGameState() !== "inBattle") {
       if (keys["ArrowUp"]) playerY -= speed;
