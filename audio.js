@@ -10,10 +10,11 @@ export function playMusic(file) {
   currentTrack.play()
 }
 
-export function stopMusic(currentTrack) {
+export function stopMusic() {
   if (currentTrack) {
       currentTrack.pause();
       currentTrack.currentTime = 0;
+      currentTrack = null;
   }
 }
 
