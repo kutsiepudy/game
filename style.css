@@ -89,10 +89,18 @@ button {
   cursor: pointer;
 }
 
-#playerHealth, #enemyHealth {
+#playerHealth {
   position: absolute;
-  padding: 140px;
+  padding: 10px;
   color: blue;
+  background-color: white;
+}
+
+#enemyHealth {
+  position: absolute;
+  left: 100px;
+  padding: 10px;
+  color: red;
   background-color: white;
 }
 
