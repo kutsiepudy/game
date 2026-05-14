@@ -67,6 +67,7 @@ export function endBattle() {
   showMessage("You won!");
   stopMusic();
   playMusic("assets/audio/victory.mp3");
+  stopMusic();
 
   gameState = "exploring";
   updateUI();
