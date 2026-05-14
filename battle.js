@@ -15,7 +15,7 @@ export function startBattle() {
   updateUI();
   clearMessages();
   sfx("assets/audio/battleStart.mp3");
-  playMusic("assets/audio/battleMusic.mp3")
+  playMusic("assets/audio/battleMusic.mp3");
   document.getElementById("battleUI").style.display = "block";
 
   startDialogue([
