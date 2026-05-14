@@ -7,7 +7,7 @@ export function playMusic(file) {
 
   currentTrack = new Audio(file)
   currentTrack.loop = true
-  currentTrack.play
+  currentTrack.play()
 }
 
 export function stopMusic(currentTrack) {
