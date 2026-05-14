@@ -89,5 +89,12 @@ button {
   cursor: pointer;
 }
 
+#playerHealth, #enemyHealth {
+  position: absolute;
+  padding: 140px;
+  color: blue;
+  background-color: white;
+}
+
 #damage { left: 20px; background-image: url('assets/misc/damageButton.png');}
 #heal { left: 140px; background-image: url('assets/misc/healButton.png'); }
