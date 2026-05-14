@@ -21,7 +21,9 @@ export function startBattle() {
   startDialogue([
     "A wild Lancer appears",
     "Battle started..."
-  ])
+  ], () => {
+    
+  });
 }
 
 export function enemyTurn(hpDisplay) {
