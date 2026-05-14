@@ -8,7 +8,7 @@ let currentDialogue = [];
 let dialogueIndex = 0;
 let dialogueActive = false;
 
-export function startDialogue(dialogueArray) {
+export function startDialogue(dialogueArray, onFinish) {
   dialogueActive = true;
   onFinishCallback = onFinish || null;
 
