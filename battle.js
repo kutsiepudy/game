@@ -27,7 +27,7 @@ export function startBattle() {
 }
 
 export function enemyTurn(hpDisplay) {
-  if (getGameState() !== "inBattle" || isDialogueActive()) return;
+  if (getGameState() !== "inBattle") return;
 
   playerStats.takeDamage(2);
 
@@ -45,7 +45,7 @@ export function enemyTurn(hpDisplay) {
 }
 
 export function playerAttack(hpDisplay, enemyDisplay) {
-  if (getGameState() !== "inBattle" || isDialogueActive()) return;
+  if (getGameState() !== "inBattle") return;
 
   enemyStats.takeDamage(4);
 
@@ -61,7 +61,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function endBattle() {
-  if (getGameState() !== "inBattle" || isDialogueActive()) return;
+  if (getGameState() !== "inBattle") return;
 
   clearMessages();
   showMessage("You won!");
