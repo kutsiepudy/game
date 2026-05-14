@@ -22,7 +22,7 @@ export function startBattle() {
     "A wild Lancer appears",
     "Battle started..."
   ], () => {
-    
+    endDialogue();
   });
 }
 
