@@ -22,6 +22,7 @@ export function startBattle() {
     "A wild Lancer appears",
     "Battle started..."
   ])
+}
 
 export function enemyTurn(hpDisplay) {
   if (getGameState() !== "inBattle" || isDialogueActive()) return;
@@ -48,7 +49,7 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 
   if (enemyStats.health <= 0) {
     endBattle();
-    return
+    return;
   }
 
   updateEnemyUI(enemyDisplay, enemyStats);
