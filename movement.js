@@ -49,6 +49,9 @@ export function setupMovement(player, enemy) {
 }
 
 function checkCollision(player, enemy) {
+  if (!enemy || enemy.style.display === "none") {
+    return false;
+  }
   const playerRect = player.getBoundingClientRect();
   const enemyRect = enemy.getBoundingClientRect();
 
