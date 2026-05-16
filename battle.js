@@ -66,8 +66,6 @@ export function endBattle() {
   clearMessages();
   showMessage("You won!");
   stopMusic();
-  playMusic("assets/audio/victory.mp3");
-  stopMusic();
   playMusic("overworld.mp3")
 
   gameState = "exploring";
