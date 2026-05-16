@@ -1,6 +1,6 @@
 import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
-import { updatePlayerUI, updateEnemyUI, showMessage, clearMessages, updateUI} from "./ui.js";
+import { updatePlayerUI, updateEnemyUI, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
 import {startDialogue, endDialogue} from "./dialogue.js";
 
@@ -35,7 +35,9 @@ export function enemyTurn(hpDisplay) {
     gameState = "gameOver";
     updateUI();
     clearMessages();
-    showMessage("Tough Luck...");
+    startDialogue(["Tough Luck..."], () => {
+      endDialogue();
+    });
     stopMusic();
     playMusic("assets/audio/gameOver.mp3");
     return;
@@ -64,9 +66,11 @@ export function endBattle() {
   if (getGameState() !== "inBattle") return;
 
   clearMessages();
-  showMessage("You won!");
+  startDialogue(["You won!"], () => {
+    endDialogue();
+  });
   stopMusic();
-  playMusic("assets/audio/overworld.mp3")
+  playMusic("overworld.mp3")
 
   gameState = "exploring";
   updateUI();
