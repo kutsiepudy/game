@@ -1,5 +1,5 @@
-import { gameState } from "./state.js"
-import { startBattle } from "./battle.js"
+import { gameState } from "./state.js";
+import { startBattle } from "./battle.js";
 
 export function setupMovement(player, enemy) {
   let playerX = 100;
@@ -19,37 +19,35 @@ export function setupMovement(player, enemy) {
   function canMove() {
     return gameState.mode === "exploring" && !gameState.dialogueActive;
   }
-  
+
+  function handleMovement() {
+    if (keys["ArrowUp"]) playerY -= speed;
+    if (keys["ArrowDown"]) playerY += speed;
+    if (keys["ArrowLeft"]) playerX -= speed;
+    if (keys["ArrowRight"]) playerX += speed;
+
+    playerX = Math.max(0, Math.min(window.innerWidth - 50, playerX));
+    playerY = Math.max(0, Math.min(window.innerHeight - 50, playerY));
+
+    player.style.left = playerX + "px";
+    player.style.top = playerY + "px";
+  }
+
+  function handleCollision() {
+    if (checkCollision(player, enemy)) {
+      startBattle();
+    }
+  }
+
   function gameLoop() {
     if (canMove()) {
-        handleMovement();
-        handleCollison();
-      }
+      handleMovement();
+      handleCollision();
     }
 
     requestAnimationFrame(gameLoop);
   }
-  function handleMovement() {
-      if (keys["ArrowUp"]) playerY -= speed;
-      if (keys["ArrowDown"]) playerY += speed;
-      if (keys["ArrowLeft"]) playerX -= speed;
-      if (keys["ArrowRight"]) playerX += speed;
 
-
-      playerX = Math.max(0, Math.min(window.innerWidth - 50, playerX));
-      playerY = Math.max(0, Math.min(window.innerHeight - 50, playerY));
-
-      player.style.left = playerX + "px";
-      player.style.top = playerY + "px";
-      if (checkCollision(player, enemy)) {
-        startBattle();
-      }
-  }
-    function handleCollision() {
-      if (checkCollision(player, enemy)) {
-        startBattle();
-      }
-    }
   gameLoop();
 }
 
