@@ -30,7 +30,6 @@ export function setupMovement(player, enemy) {
       player.style.top = playerY + "px";
       if (checkCollision(player, enemy)) {
         startBattle();
-        return;
       }
     }
 
