@@ -1,12 +1,12 @@
 import { showMessage, clearMessages } from "./ui.js";
 import { sfx } from "./audio.js";
+import { gameState, dialogueActive } from "./state.js"
 
 const text = document.getElementById("text");
 let onFinishCallback = null;
 
 let currentDialogue = [];
 let dialogueIndex = 0;
-let dialogueActive = false;
 
 export function startDialogue(dialogueArray, onFinish) {
   dialogueActive = true;
