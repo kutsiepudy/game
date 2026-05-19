@@ -6,7 +6,8 @@ import {startDialogue, endDialogue} from "./dialogue.js";
 import {gameState, setMode, setPhase} from "./state.js";
 
 export function startBattle() {
-  gameState = "inBattle";
+  setMode("inBattle");
+  setPhase("intro")
   updateUI();
   clearMessages();
   sfx("assets/audio/battleStart.mp3");
@@ -17,17 +18,18 @@ export function startBattle() {
     "A wild Lancer appears",
     "Battle started..."
   ], () => {
-    endDialogue();
+    setPhase("playerTurn");
   });
 }
 
 export function enemyTurn(hpDisplay) {
-  if (getGameState() !== "inBattle") return;
+  if (gameState.mode !== "inBattle") return;
 
   playerStats.takeDamage(2);
 
   if (playerStats.health <= 0) {
-    gameState = "gameOver";
+    setMode("gameOver");
+    setPhase(null);
     updateUI();
     clearMessages();
     startDialogue(["Tough Luck..."], () => {
@@ -42,7 +44,7 @@ export function enemyTurn(hpDisplay) {
 }
 
 export function playerAttack(hpDisplay, enemyDisplay) {
-  if (getGameState() !== "inBattle") return;
+  if (gameState.mode !== "inBattle") return;
 
   enemyStats.takeDamage(4);
 
@@ -58,24 +60,23 @@ export function playerAttack(hpDisplay, enemyDisplay) {
 }
 
 export function endBattle() {
-  if (getGameState() !== "inBattle") return;
+  if (gameState.mode !== "inBattle") return;
 
   clearMessages();
   startDialogue(["You won!"], () => {
-    endDialogue();
+    setMode("exploring");
+    setPhase(null)
+    stopMusic();
+    playMusic("overworld.mp3")
+    updateUI();
+  
+    document.getElementById("enemy").style.display = "none";
+    document.getElementById("battleUI").style.display = "none";
   });
-  stopMusic();
-  playMusic("overworld.mp3")
-
-  gameState = "exploring";
-  updateUI();
-
-  document.getElementById("enemy").style.display = "none";
-  document.getElementById("battleUI").style.display = "none";
 }
 
 export function playerHeal(hpDisplay) {
-  if (getGameState() !== "inBattle") return;
+  if (gameState.mode !== "inBattle") return;
 
   const healed = playerStats.heal(4);
   if (!healed) {
