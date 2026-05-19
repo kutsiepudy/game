@@ -2,7 +2,7 @@ import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, clearMessages, updateUI} from "./ui.js";
 import {playMusic, sfx, stopMusic} from "./audio.js";
-import {startDialogue, endDialogue} from "./dialogue.js";
+import {startDialogue} from "./dialogue.js";
 import {gameState, setMode, setPhase} from "./state.js";
 
 export function startBattle() {
