@@ -1,6 +1,6 @@
 import { showMessage, clearMessages } from "./ui.js";
 import { sfx } from "./audio.js";
-import { gameState, dialogueActive } from "./state.js"
+import { gameState, setDialogueActive } from "./state.js"
 
 const text = document.getElementById("text");
 let onFinishCallback = null;
