@@ -1,15 +1,17 @@
 import { showMessage, clearMessages } from "./ui.js";
 import { sfx } from "./audio.js";
-import { gameState, setDialogueActive } from "./state.js"
+import { gameState, setDialogueActive } from "./state.js";
 
 const text = document.getElementById("text");
-let onFinishCallback = null;
 
+let onFinishCallback = null;
 let currentDialogue = [];
 let dialogueIndex = 0;
 
 export function startDialogue(dialogueArray, onFinish) {
-  dialogueActive = true;
+  if (gameState.dialogueActive) return;
+
+  setDialogueActive(true);
   onFinishCallback = onFinish || null;
 
   text.style.display = "block";
@@ -22,7 +24,7 @@ export function startDialogue(dialogueArray, onFinish) {
 }
 
 export function nextLine() {
-  if (!dialogueActive) return;
+  if (!gameState.dialogueActive) return;
 
   if (dialogueIndex < currentDialogue.length) {
     clearMessages();
@@ -34,7 +36,8 @@ export function nextLine() {
 }
 
 export function endDialogue() {
-  dialogueActive = false;
+  setDialogueActive(false);
+
   currentDialogue = [];
   dialogueIndex = 0;
 
@@ -42,17 +45,14 @@ export function endDialogue() {
   text.style.display = "none";
 
   if (onFinishCallback) {
-    onFinishCallback();
+    const callback = onFinishCallback;
     onFinishCallback = null;
+    callback();
   }
 }
 
-export function isDialogueActive() {
-  return dialogueActive;
-}
-
 document.addEventListener("keydown", (e) => {
-  if (!dialogueActive) return;
+  if (!gameState.dialogueActive) return;
 
   if (e.key === "Z" || e.key === "z") {
     sfx("assets/misc/input.mp3");
