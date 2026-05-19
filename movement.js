@@ -1,4 +1,5 @@
-import {getGameState, startBattle} from "./battle.js";
+import { gameState } from "./state.js"
+import { startBattle } from "./battle.js"
 
 export function setupMovement(player, enemy) {
   let playerX = 100;
@@ -15,8 +16,20 @@ export function setupMovement(player, enemy) {
     keys[e.key] = false;
   });
 
+  function canMove() {
+    return gameState.mode === "exploring" && !gameState.dialogueActive;
+  }
+  
   function gameLoop() {
-    if (getGameState() !== "inBattle") {
+    if (canMove()) {
+        handleMovement();
+        handleCollison();
+      }
+    }
+
+    requestAnimationFrame(gameLoop);
+  }
+  function handleMovement() {
       if (keys["ArrowUp"]) playerY -= speed;
       if (keys["ArrowDown"]) playerY += speed;
       if (keys["ArrowLeft"]) playerX -= speed;
@@ -31,18 +44,19 @@ export function setupMovement(player, enemy) {
       if (checkCollision(player, enemy)) {
         startBattle();
       }
-    }
-
-    requestAnimationFrame(gameLoop);
   }
-
+    function handleCollision() {
+      if (checkCollision(player, enemy)) {
+        startBattle();
+      }
+    }
   gameLoop();
 }
 
 function checkCollision(player, enemy) {
-  if (!enemy || enemy.style.display === "none") {
-    return false;
-  }
+  if (!enemy || enemy.style.display === "none") return false;
+  if (gameState.mode !== "exploring") return false;
+
   const playerRect = player.getBoundingClientRect();
   const enemyRect = enemy.getBoundingClientRect();
 
