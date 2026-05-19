@@ -1,26 +1,34 @@
 import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
+
 import { updatePlayerUI, updateEnemyUI } from "./ui.js";
 import { playerAttack, playerHeal } from "./battle.js";
 import { setupMovement } from "./movement.js";
 
-const player = document.getElementById("player");
-const enemy = document.getElementById("enemy");
-const hpDisplay = document.getElementById("playerHealth");
-const enemyHPDisplay = document.getElementById("enemyHealth");
+window.addEventListener("DOMContentLoaded", () => {
+  const player = document.getElementById("player");
+  const enemy = document.getElementById("enemy");
 
-const dmgButton = document.getElementById("damage");
-const hpButton = document.getElementById("heal");
+  const hpDisplay = document.getElementById("playerHealth");
+  const enemyHPDisplay = document.getElementById("enemyHealth");
 
-updatePlayerUI(hpDisplay, playerStats);
-updateEnemyUI(enemyHPDisplay, enemyStats);
+  const dmgButton = document.getElementById("damage");
+  const hpButton = document.getElementById("heal");
+  
+  if (!player || !enemy) return;
 
-setupMovement(player, enemy);
+  updatePlayerUI(hpDisplay, playerStats);
+  updateEnemyUI(enemyHPDisplay, enemyStats);
 
-dmgButton.addEventListener("click", () => {
-  playerAttack(hpDisplay, enemyHPDisplay);
-});
+  setupMovement(player, enemy);
 
-hpButton.addEventListener("click", () => {
-  playerHeal(hpDisplay);
+  dmgButton?.addEventListener("click", () => {
+    playerAttack(hpDisplay, enemyHPDisplay);
+  });
+
+  hpButton?.addEventListener("click", () => {
+    playerHeal(hpDisplay);
+  });
+
+  console.log("Game initialized");
 });
