@@ -14,4 +14,4 @@ export function setPhase(phase) {
 
 export function setDialogueActive(active) {
   gameState.dialogueActive = active
-}'
+}
