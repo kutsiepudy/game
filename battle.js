@@ -109,7 +109,7 @@ export function endBattle() {
     "You won!"
   ], () => {
     stopMusic();
-    playMusic("overworld.mp3");
+    playMusic("assets/audio/overworld.mp3");
 
     setMode("exploring");
     setPhase(null);
