@@ -9,7 +9,7 @@ export function setMode(newMode) {
 };
 
 export function setPhase(phase) {
-  gameState.battlePhase = phase;
+  gameState.phase = phase;
 };
 
 export function setDialogueActive(active) {
