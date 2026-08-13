@@ -5,7 +5,7 @@ export function createEnemy(type = "basic") {
     boss: { health: 60, damage: 10, name: "huge"}
   };
 
- const config = enemyTypes[types] || enemyTypes.basic;
+ const config = enemyTypes[type] || enemyTypes.basic;
 
  return {
    name: config.name,
