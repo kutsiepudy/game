@@ -11,7 +11,7 @@ export function updateEnemyUI(enemyDisplay, enemyStats) {
   if (!enemyDisplay) return;
 
   enemyDisplay.textContent =
-    enemyDisplay.textContent = `${enemyStats.name} HP: ${enemyStats.health}/${enemyStats.maxHealth}`;;
+    `${enemyStats.name} HP: ${enemyStats.health}/${enemyStats.maxHealth}`;
 }
 
 export function showMessage(msg) {
