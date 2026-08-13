@@ -24,4 +24,4 @@ export function createEnemy(type = "goblin") {
  };
 }
 
-export let enemyStats = createEnemy("basic")
+export let enemyStats = createEnemy("goblin")
