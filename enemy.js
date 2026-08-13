@@ -1,8 +1,8 @@
-export function createEnemy(type = "basic") {
+export function createEnemy(type = "goblin") {
   const enemyTypes = {
-    basic: { health: 20, damage: 2, name: "small" },
-    strong: { health: 30, damage: 4, name: "big" },
-    boss: { health: 60, damage: 10, name: "huge"}
+    goblin: { health: 20, damage: 2, name: "Goblin" },
+    guard: { health: 30, damage: 4, name: "Guard" },
+    necromancer: { health: 60, damage: 10, name: "King"}
   };
 
  const config = enemyTypes[type] || enemyTypes.basic;
