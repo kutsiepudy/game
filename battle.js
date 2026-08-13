@@ -7,7 +7,7 @@ import { gameState, setMode, setPhase } from "./state.js";
 
 let enemyStats;
 
-export function startBattle(enemyType = "basic") {
+export function startBattle(enemyType = "goblin") {
   enemyStats = createEnemy(enemyType);
   enemyStats.reset();
   
