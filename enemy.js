@@ -1,11 +1,11 @@
 export function enemyTypes(type = "basic") {
-  const enemyClasses = {
+  const enemyTypes = {
     basic: { health: 20, damage: 2, name: "small" },
     strong: { health: 30, damage: 4, name: "big" },
     boss: { health: 60, damage: 10, name: "huge"}
   };
 
- const config = enemyTypes[types] || enemyClasse.basic;
+ const config = enemyTypes[types] || enemyTypes.basic;
 
  return {
    name: config.name,
@@ -24,4 +24,4 @@ export function enemyTypes(type = "basic") {
  };
 }
 
-export let enemyStats = creatEnemy("basic")
+export let enemyStats = createEnemy("basic")
