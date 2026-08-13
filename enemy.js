@@ -1,4 +1,4 @@
-export function enemyTypes(type = "basic") {
+export function createEnemy(type = "basic") {
   const enemyTypes = {
     basic: { health: 20, damage: 2, name: "small" },
     strong: { health: 30, damage: 4, name: "big" },
