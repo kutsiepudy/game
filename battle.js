@@ -5,7 +5,12 @@ import { playMusic, sfx, stopMusic } from "./audio.js";
 import { startDialogue } from "./dialogue.js";
 import { gameState, setMode, setPhase } from "./state.js";
 
-export function startBattle() {
+let enemyStats = defaultEnemy;
+
+export function startBattle(enemyType = "basic") {
+  enemyStats = createEnemy(enemyType);
+  enemyStats.reset();
+  
   setMode("inBattle");
   setPhase("intro");
 
