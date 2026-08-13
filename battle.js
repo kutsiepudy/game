@@ -1,11 +1,11 @@
 import { playerStats } from "./player.js";
-import { enemyStats } from "./enemy.js";
+import { createEnemy } from "./enemy.js";
 import { updatePlayerUI, updateEnemyUI, clearMessages, updateUI } from "./ui.js";
 import { playMusic, sfx, stopMusic } from "./audio.js";
 import { startDialogue } from "./dialogue.js";
 import { gameState, setMode, setPhase } from "./state.js";
 
-let enemyStats = defaultEnemy;
+let enemyStats;
 
 export function startBattle(enemyType = "basic") {
   enemyStats = createEnemy(enemyType);
@@ -23,7 +23,7 @@ export function startBattle(enemyType = "basic") {
   document.getElementById("battleUI").style.display = "block";
 
   startDialogue([
-    "A wild Lancer appears",
+    `A wild ${enemyStats.name} appears`,
     "Battle started..."
   ], () => {
     setPhase("playerTurn");
@@ -36,7 +36,7 @@ export function enemyTurn(hpDisplay) {
     gameState.phase !== "enemyTurn"
   ) return;
 
-  playerStats.takeDamage(2);
+  playerStats.takeDamage(enemyStats.damage);
 
   if (playerStats.health <= 0) {
     setMode("gameOver");
