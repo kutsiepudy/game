@@ -39,6 +39,23 @@ export function setupMovement(player, enemy) {
     }
   }
 
+function handleNPCCollision() {
+  const sillyNPC = document.getElementById("sillyNPC");
+  const angryNPC = document.getElementById("angryNPC");
+
+  if (checkCollision(player, sillyNPC)) {
+    if (!gameState.dialogueActive) {
+      storyManager.playScene("silly_npc_chat");
+    }
+  }
+
+  if (checkCollision(player, angryNPC)) {
+    if (!gameState.dialogueActive && !storyManager.hasFlag("talked_to_angry_npc")) {
+      storyManager.playScene("angry_npc_chat");
+    }
+  }
+}
+
   function gameLoop() {
     if (canMove()) {
       handleMovement();
