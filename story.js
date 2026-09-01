@@ -1,14 +1,18 @@
 export class StoryManager {
   constructor() {
-    this.currentCutscene = "intro";
+    this.currentScene = "intro";
     this.sceneHistory = [];
     this.flags = {};
     this.variables = {};
-    this.inventory = []
+    this.inventory = [];
+    this.scenes = {};
+  }
+  setScenes(scenes) {
+    this.scenes = scenes;
   }
 
   getScene(sceneID) {
-    return SCENES[sceneID] || null;
+    return this.scenes[sceneID] || null;
   }
 
   goToScene(sceneID) {
@@ -26,17 +30,20 @@ export class StoryManager {
   }
 
   getVariable(key) {
-    return this.variable[key] || 0;
+    return this.variables[key] || 0;
   }
 
   async playScene(sceneID) {
     const scene = this.getScene(sceneID);
-    
     if (!scene) return;
 
     if (scene.setup) await scene.setup();
 
     if (scene.dialogue) {
+      await this.playDialogue(scene.dialogue);
+    }
+
+    if (scene.choices) {
       await this.showChoices(scene.choices);
     }
 
@@ -55,13 +62,13 @@ export class StoryManager {
     return new Promise((resolve) => {
       displayChoices(choices, (choiceId) => {
         const choice = choices.find(c => c.id === choiceId);
-        
-        if (choice.onSelect) choice.onSelect();
-        
-        if (choice.next) {
+
+        if (choice && choice.onSelect) choice.onSelect();
+
+        if (choice && choice.next) {
           this.goToScene(choice.next);
         }
-        
+
         resolve(choiceId);
       });
     });
