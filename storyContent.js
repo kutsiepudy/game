@@ -8,7 +8,7 @@ export const SCENES = {
       playMusic("assets/audio/intro.mp3");
     },
     dialogue: [
-      "Welcome to [GAME NAME]...",
+      "Welcome to Slime Hunter (dev)...",
       "You wake up in a strange place.",
       "What happened?"
     ],
