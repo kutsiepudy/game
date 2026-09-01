@@ -1,9 +1,10 @@
 import { playerStats } from "./player.js";
 import { enemyStats } from "./enemy.js";
-
 import { updatePlayerUI, updateEnemyUI } from "./ui.js";
 import { playerAttack, playerHeal } from "./battle.js";
 import { setupMovement } from "./movement.js";
+import { storyManager } from "./story.js";
+import SCENES from "./storyContent.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("player");
@@ -30,5 +31,5 @@ window.addEventListener("DOMContentLoaded", () => {
     playerHeal(hpDisplay);
   });
 
-  console.log("Game initialized");
+  storyManager.playScene("intro");
 });
