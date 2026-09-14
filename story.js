@@ -75,4 +75,14 @@ export class StoryManager {
   }
 }
 
+addVariable(key, value) {
+  this.variables[key] = (this.variables[key] || 0) + value;
+}
+
+addPartyMember(memberID) {
+  if (!this.inventory.includes(memberID)) {
+    this.inventory.push(memberID);
+  }
+}
+
 export const storyManager = new StoryManager();
