@@ -59,7 +59,7 @@ export function displayChoices(choices, onChoiceSelect) {
   choices.forEach(choice => {
     const button = document.createElement("button");
     button.textContent = choice.text;
-    button.addEventListener("click" () => {
+    button.addEventListener("click", () => {
       text.innerHTML = "";
       onChoiceSelect(choice.id);
     });
