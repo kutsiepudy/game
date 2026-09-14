@@ -51,6 +51,22 @@ export function endDialogue() {
   }
 }
 
+export function displayChoices(choices, onChoicesSelect) {
+  const text = document.getElementById("text");
+
+  text.innterHTML = "";
+
+  choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.textContent = choice.text;
+    button.addEventListener("click" => {
+      text.innerHTML = "";
+      onChoiceSelect(choice.id);
+    });
+    text.appendChild(button);
+  });
+};
+
 document.addEventListener("keydown", (e) => {
   if (!gameState.dialogueActive) return;
 
