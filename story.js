@@ -1,3 +1,5 @@
+import { startDialogue, displayChoices } from "./dialogue.js"
+
 export class StoryManager {
   constructor() {
     this.currentScene = "intro";
