@@ -30,6 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
   hpButton?.addEventListener("click", () => {
     playerHeal(hpDisplay);
   });
-
+  storyManager.setScenes(SCENES);
   storyManager.playScene("intro");
 });
