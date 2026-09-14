@@ -51,15 +51,15 @@ export function endDialogue() {
   }
 }
 
-export function displayChoices(choices, onChoicesSelect) {
+export function displayChoices(choices, onChoiceSelect) {
   const text = document.getElementById("text");
 
-  text.innterHTML = "";
+  text.innerHTML = "";
 
   choices.forEach(choice => {
     const button = document.createElement("button");
     button.textContent = choice.text;
-    button.addEventListener("click" => {
+    button.addEventListener("click" () => {
       text.innerHTML = "";
       onChoiceSelect(choice.id);
     });
