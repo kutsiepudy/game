@@ -56,7 +56,7 @@ export class StoryManager {
 
   playDialogue(dialogueArray) {
     return new Promise((resolve) => {
-      startDialogue(dialogueArray, onFinish);
+      startDialogue(dialogueArray, resolve);
     });
   }
 
