@@ -75,11 +75,11 @@ export class StoryManager {
   }
 }
 
-function addVariable(key, value) {
+export function addVariable(key, value) {
   this.variables[key] = (this.variables[key] || 0) + value;
 }
 
-function addPartyMember(memberID) {
+export function addPartyMember(memberID) {
   if (!this.inventory.includes(memberID)) {
     this.inventory.push(memberID);
   }
