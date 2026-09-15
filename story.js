@@ -8,6 +8,7 @@ export class StoryManager {
     this.variables = {};
     this.inventory = [];
     this.scenes = {};
+    this.storyProgress = 0;
   }
   setScenes(scenes) {
     this.scenes = scenes;
