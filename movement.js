@@ -1,65 +1,28 @@
 import { gameState } from "./state.js";
 import { startBattle } from "./battle.js";
+import { storyManager } from "./story.js"; 
 
 export function setupMovement(player, enemy) {
-  let playerX = 100;
-  let playerY = 100;
-  const speed = 3;
 
-  const keys = {};
-
-  document.addEventListener("keydown", (e) => {
-    keys[e.key] = true;
-  });
-
-  document.addEventListener("keyup", (e) => {
-    keys[e.key] = false;
-  });
-
-  function canMove() {
-    return gameState.mode === "exploring" && !gameState.dialogueActive;
+  function handleDoorCollision() {
+    const doors = document.querySelectorAll(".door");
+    doors.forEach((door) => {
+      if (!door || door.style.display === "none") return;
+      if (checkCollision(player, door)) {
+        const target = door.dataset.target;
+        if (target && !gameState.dialogueActive) {
+          storyManager.playScene(target);
+        }
+      }
+    });
   }
-
-  function handleMovement() {
-    if (keys["ArrowUp"]) playerY -= speed;
-    if (keys["ArrowDown"]) playerY += speed;
-    if (keys["ArrowLeft"]) playerX -= speed;
-    if (keys["ArrowRight"]) playerX += speed;
-
-    playerX = Math.max(0, Math.min(window.innerWidth - 50, playerX));
-    playerY = Math.max(0, Math.min(window.innerHeight - 50, playerY));
-
-    player.style.left = playerX + "px";
-    player.style.top = playerY + "px";
-  }
-
-  function handleCollision() {
-    if (checkCollision(player, enemy)) {
-      startBattle();
-    }
-  }
-
-function handleNPCCollision() {
-  const sillyNPC = document.getElementById("sillyNPC");
-  const angryNPC = document.getElementById("angryNPC");
-
-  if (checkCollision(player, sillyNPC)) {
-    if (!gameState.dialogueActive) {
-      storyManager.playScene("silly_npc_chat");
-    }
-  }
-
-  if (checkCollision(player, angryNPC)) {
-    if (!gameState.dialogueActive && !storyManager.hasFlag("talked_to_angry_npc")) {
-      storyManager.playScene("angry_npc_chat");
-    }
-  }
-}
 
   function gameLoop() {
     if (canMove()) {
       handleMovement();
       handleCollision();
+      handleNPCCollision(); 
+      handleDoorCollision(); 
     }
 
     requestAnimationFrame(gameLoop);
@@ -68,17 +31,17 @@ function handleNPCCollision() {
   gameLoop();
 }
 
-function checkCollision(player, enemy) {
-  if (!enemy || enemy.style.display === "none") return false;
+function checkCollision(player, other) {
+  if (!other || other.style.display === "none") return false;
   if (gameState.mode !== "exploring") return false;
 
   const playerRect = player.getBoundingClientRect();
-  const enemyRect = enemy.getBoundingClientRect();
+  const otherRect = other.getBoundingClientRect();
 
   return !(
-    playerRect.right < enemyRect.left ||
-    playerRect.left > enemyRect.right ||
-    playerRect.bottom < enemyRect.top ||
-    playerRect.top > enemyRect.bottom
+    playerRect.right < otherRect.left ||
+    playerRect.left > otherRect.right ||
+    playerRect.bottom < otherRect.top ||
+    playerRect.top > otherRect.bottom
   );
 }
