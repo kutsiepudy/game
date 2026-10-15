@@ -1,6 +1,6 @@
 export const gameState = {
   mode: "exploring",
-  battlePhase: null,
+  phase: null,
   dialogueActive: false
 };
 
