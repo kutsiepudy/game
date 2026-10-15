@@ -18,19 +18,22 @@ export const SCENES = {
       playMusic("assets/audio/overworld.mp3");
       document.body.style.backgroundImage = "url('assets/rooms/room1.png')"
       const enemy = document.getElementById("enemy");
-
+      
       if (enemy) {
-        enemy.style.display = block;
+        enemy.style.display = "block";
         enemy.style.left = "200px";
         enemy.style.top = "400px";
       }
 
       const door = document.getElementById("doorToRoom2");
+      if (door) door.style.display = "block";
+
+      const door = document.getElementById("doorToRoom2");
       if (door) door.style.display = block;
     },
-    dialogue: [
-      "room 1",
-      "testing rooms"
+      dialogue: [
+        "room 1",
+        "testing rooms"
     ]
   },
 
@@ -47,7 +50,8 @@ export const SCENES = {
       }
     },
     dialogue: [
-      "You enter Room 2.",
+      "room 2",
+      "testing rooms"
     ]
   }
 };
