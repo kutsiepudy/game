@@ -5,7 +5,7 @@ export function createEnemy(type = "goblin") {
     necromancer: { health: 60, damage: 10, name: "King"}
   };
 
- const config = enemyTypes[type] || enemyTypes.basic;
+ const config = enemyTypes[type] || enemyTypes.goblin;
 
  return {
    name: config.name,
